@@ -1,0 +1,7 @@
+<app-title-list [text]="'Preferiti'"/>
+
+<div *ngFor="let favPost of postsService.favoriteList" class="mb-3">
+  <!-- {{favPost.title}} -->
+  <app-favorite-item [favPost]="favPost" (onRemovePost)="onRemoveFromFavorites($event)"></app-favorite-item>
+</div>
+<button class="btn btn-danger" *ngIf="postsService.favoriteList.length > 0" (click)="onClearList()">Svuota</button>

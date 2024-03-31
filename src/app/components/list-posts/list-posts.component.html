@@ -1,0 +1,17 @@
+<app-title-list [text]="'Posts'"/>
+
+<div class="btn-group" role="group">
+  <button type="button"
+  class="btn btn-outline-secondary"
+  [ngClass]="{'active': selectedFilter === 'all'}"
+  (click)="selectFilter('all')">Tutti</button>
+  <button type="button"
+    class="btn btn-outline-secondary"
+    *ngFor="let cat of categories"
+    [ngClass]="{'active': selectedFilter === cat.id }"
+    (click)="selectFilter(cat.id)">{{cat.title}}</button>
+</div>
+<div class="mt-3" *ngFor="let p of posts">
+  <app-post [post]="p" (onAddToFavorite)="addToFav($event)"></app-post>
+</div>
+
